@@ -1,0 +1,8 @@
+What triggers this?
+What does it do to the data?
+What does the UI do after?
+
+What data does this component receive through props?
+What data does it store using useState?
+What side effects does it run using useEffect or async functions?
+What causes the UI to change?
