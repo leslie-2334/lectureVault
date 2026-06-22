@@ -1,6 +1,7 @@
 import { supabase } from "../supabaseClient";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import './Home.css'
 
 export default function Home() {
     const [user, setUser] = useState(null);
@@ -18,7 +19,7 @@ export default function Home() {
     };
 
     return (
-        <div style={{ maxWidth: 600, margin: "100px auto", padding: "0 20px" }}>
+        <div className="home-container">
             <h2>LectureVault 🎓</h2>
             {user && <p>Logged in as: {user.email}</p>}
             <button onClick={handleLogout}>Log out</button>

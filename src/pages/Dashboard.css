@@ -1,0 +1,44 @@
+.dashboard-container{
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 0px 20px
+}
+
+.dashboard-container .dashboard-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-container .dashboard-header-actions{
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+.dashboard-container .user-name{
+    color: gray;
+}
+
+.dashboard-container .classroom-content-container{
+    margin-top: 32px;
+}
+
+.dashboard-container .classroom-code{
+    color: black;
+}
+
+.dashboard-container .join-code-text{
+    color: gray;
+}
+
+.dashboard-container .classroom-hr{
+    margin: 24px 0px
+}
+
+.dashboard-container .create-join-classroom{
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}

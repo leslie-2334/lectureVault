@@ -6,6 +6,7 @@ import JoinClassroom from '../components/JoinClassroom'
 import FileUpload from '../components/FileUpload'
 import FileList from '../components/FileList'
 import NotificationBell from '../components/NotificationBell'
+import './Dashboard.css'
 
 export default function Dashboard() {
     const [user, setUser] = useState(null)
@@ -46,10 +47,10 @@ export default function Dashboard() {
     if (loading) return <p>Loading...</p>
 
     return (
-        <div style={{ maxWidth: 600, margin: '60px auto', padding: '0 20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="dashboard-container" >
+            <div className="dashboard-header">
                 <h2>LectureVault 🎓</h2>
-                <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                <div className="dashboard-header-actions">
                     {classroom && user && (
                         <NotificationBell user={user} classroom={classroom} />
                     )}
@@ -57,13 +58,13 @@ export default function Dashboard() {
                 </div>
             </div>
 
-            {user && <p style={{ color: 'gray' }}>{user.user_metadata.full_name}</p>}
+            {user && <p className="user-name">{user.user_metadata.full_name}</p>}
 
             {classroom ? (
-                <div style={{ marginTop: 32 }}>
+                <div className="classroom-content-container" >
                     <h3>{classroom.name}</h3>
-                    <p style={{ color: 'gray' }}>Join code: <strong style={{ color: 'black' }}>{classroom.code}</strong></p>
-                    <hr style={{ margin: '24px 0' }} />
+                    <p className="join-code-text" >Join code: <strong className="classroom-code" >{classroom.code}</strong></p>
+                    <hr className="classroom-hr" />
 
                     {/* {classroom.created_by === user.id && (
                         <FileUpload user={user} classroom={classroom} onUploaded={handleUploaded} />
@@ -73,11 +74,11 @@ export default function Dashboard() {
                         <FileUpload user={user} classroom={classroom} onUploaded={handleUploaded} />
                     ) : null}
 
-                    <hr style={{ margin: '24px 0' }} />
+                    <hr className="classroom-hr" />
                     <FileList classroom={classroom} refreshTrigger={refreshTrigger} />
                 </div>
             ) : (
-                <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 32 }}>
+                <div className="create-join-classroom" >
                     <CreateClassroom user={user} onCreated={setClassroom} />
                     <hr />
                     <JoinClassroom user={user} onJoined={setClassroom} />

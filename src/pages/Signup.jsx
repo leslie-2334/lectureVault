@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
 import { useNavigate, Link } from 'react-router-dom'
+import './Signup.css'
 
 export default function Signup() {
     const [email, setEmail] = useState('')
@@ -24,47 +25,45 @@ export default function Signup() {
         if (error) {
             setError(error.message)
             setLoading(false)
+            return
         }
         
         navigate('/dashboard')
     }
 
     return (
-        <div style={{ maxWidth: 400, margin: '100px auto', padding: '0 20px' }}>
+        <div className="signup-container">
             <h2>Create your account</h2>
             <form onSubmit={handleSignup}>
-                <div style={{ marginBottom: 12 }}>
+                <div className="form-group" >
                     <input
                         type="text"
                         placeholder="Full Name"
                         value={fullname}
                         onChange={(e) => setFullname(e.target.value)}
                         required
-                        style={{ width: '100%', padding: 10, boxSizing: 'border-box' }}
                     />
                 </div>
-                <div style={{ marginBottom: 12 }}>
+                <div className="form-group" >
                     <input
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        style={{ width: '100%', padding: 10, boxSizing: 'border-box' }}
                     />
                 </div>
-                <div style={{ marginBottom: 12 }}>
+                <div className="form-group" >
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        style={{ width: '100%', padding: 10, boxSizing: 'border-box' }}
                     />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit" disabled={loading} style={{ width: '100%', padding: 10 }}>
+                {error && <p className="error-message">{error}</p>}
+                <button type="submit" disabled={loading}>
                     {loading ? 'Creating account...' : 'Sign up'}
                 </button>
             </form>

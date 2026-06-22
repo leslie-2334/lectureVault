@@ -1,0 +1,20 @@
+.login-container{
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+.login-container .form-group{
+    margin-bottom: 12px;
+}
+.login-container input{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.login-container button{
+    width: 100%;
+    padding: 10px
+}
+.login-container .error-message{
+    color: red;
+}

@@ -1,0 +1,20 @@
+.signup-container{
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+.signup-container .form-group{
+    margin-bottom: 12px;
+}
+.signup-container input{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.signup-container button{
+    width: 100%;
+    padding: 10px;
+}
+.signup-container .error-message{
+    color: red;
+}

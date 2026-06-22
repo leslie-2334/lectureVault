@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
 import { useNavigate, Link } from 'react-router-dom'
+import './Login.css'
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -26,31 +27,29 @@ export default function Login() {
     }
 
     return (
-        <div style={{ maxWidth: 400, margin: '100px auto', padding: '0 20px' }}>
+        <div className="login-container">
             <h2>Welcome back</h2>
             <form onSubmit={handleLogin}>
-                <div style={{ marginBottom: 12 }}>
+                <div className="form-group" >
                     <input
                         type="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        style={{ width: '100%', padding: 10, boxSizing: 'border-box' }}
                     />
                 </div>
-                <div style={{ marginBottom: 12 }}>
+                <div className="form-group">
                     <input
                         type="password"
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        style={{ width: '100%', padding: 10, boxSizing: 'border-box' }}
                     />
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <button type="submit" disabled={loading} style={{ width: '100%', padding: 10 }}>
+                {error && <p className="error-message">{error}</p>}
+                <button type="submit" disabled={loading}>
                     {loading ? 'Logging in...' : 'Log in'}
                 </button>
             </form>
