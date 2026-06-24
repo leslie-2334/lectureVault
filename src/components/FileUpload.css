@@ -1,0 +1,17 @@
+.file-upload-container {
+    margin-bottom: 16px;
+}
+
+.file-upload-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.file-upload-container .error-message {
+    color: red;
+    /* margin-top: 8px; */
+}
+.file-upload-container .uploading {
+    color: gray;
+    /* margin-top: 8px; */
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient'
+import './NotificationBell.css'
 
 export default function NotificationBell({ user, classroom }) {
     const [notifications, setNotifications] = useState([])
@@ -52,52 +53,35 @@ export default function NotificationBell({ user, classroom }) {
     const unreadCount = notifications.length
 
     return (
-        <div style={{ position: 'relative', display: 'inline-block' }}>
+        <div className="notification-bell" >
             <button
                 onClick={() => setOpen(!open)}
-                style={{ background: 'none', border: '1px solid #ccc', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontSize: 18 }}
+                className="notification-button"
             >
                 🔔
                 {unreadCount > 0 && (
-                    <span style={{
-                        background: 'red',
-                        color: 'white',
-                        borderRadius: '50%',
-                        fontSize: 11,
-                        padding: '1px 5px',
-                        marginLeft: 4
-                    }}>
+                    <span className="unread-count" >
                         {unreadCount}
                     </span>
                 )}
             </button>
 
             {open && (
-                <div style={{
-                    position: 'absolute',
-                    right: 0,
-                    top: '110%',
-                    background: 'white',
-                    border: '1px solid #eee',
-                    borderRadius: 8,
-                    width: 280,
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                    zIndex: 100
-                }}>
-                    <div style={{ padding: '12px 16px', borderBottom: '1px solid #eee', display: 'flex', justifyContent: 'space-between' }}>
-                        <span style={{ fontWeight: 500 }}>Notifications</span>
+                <div className="notification-dropdown">
+                    <div className="notification-dropdown-container" >
+                        <span className="notification-dropdown-header" >Notifications</span>
                         {unreadCount > 0 && (
-                            <button onClick={markAllRead} style={{ fontSize: 12, background: 'none', border: 'none', cursor: 'pointer', color: 'blue' }}>
+                            <button className="mark-all-read" onClick={markAllRead}>
                                 Mark all read
                             </button>
                         )}
                     </div>
 
                     {notifications.length === 0 ? (
-                        <p style={{ padding: 16, color: 'gray', margin: 0 }}>You're all caught up</p>
+                        <p className="notification-empty" >You're all caught up</p>
                     ) : (
                         notifications.map((n) => (
-                            <div key={n.id} style={{ padding: '10px 16px', borderBottom: '1px solid #f5f5f5', fontSize: 14 }}>
+                            <div key={n.id} className="notification-item" >
                                 {n.message}
                             </div>
                         ))

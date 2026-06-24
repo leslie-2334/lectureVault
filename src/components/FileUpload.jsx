@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
+import './FileUpload.css'
 
 export default function FileUpload({ user, classroom, onUploaded }) {
     const [uploading, setUploading] = useState(false)
@@ -60,8 +61,8 @@ export default function FileUpload({ user, classroom, onUploaded }) {
     }
 
     return (
-        <div style={{ marginBottom: 16 }}>
-            <label style={{ display: 'block', marginBottom: 8, fontWeight: 500 }}>
+        <div className="file-upload-container" >
+            <label >
                 Upload material
             </label>
             <input
@@ -69,8 +70,8 @@ export default function FileUpload({ user, classroom, onUploaded }) {
                 onChange={handleUpload}
                 disabled={uploading}
             />
-            {uploading && <p style={{ color: 'gray' }}>Uploading...</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {uploading && <p className='uploading'>Uploading...</p>}
+            {error && <p className='error-message'>{error}</p>}
         </div>
     )
 }

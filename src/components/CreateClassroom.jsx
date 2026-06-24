@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
+import './CreateClassroom.css'
 
 export default function CreateClassroom({ user, onCreated }) {
   const [name, setName] = useState('')
@@ -38,19 +39,20 @@ export default function CreateClassroom({ user, onCreated }) {
   }
 
   return (
-    <div>
+    <div className="create-classroom-container">
       <h3>Create a classroom</h3>
       <form onSubmit={handleCreate}>
+
         <input
           type="text"
           placeholder="Classroom name e.g. IS 001"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          style={{ width: '100%', padding: 10, boxSizing: 'border-box', marginBottom: 12 }}
         />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit" disabled={loading} style={{ width: '100%', padding: 10 }}>
+        
+        {error && <p className="error-message" >{error}</p>}
+        <button type="submit" disabled={loading}>
           {loading ? 'Creating...' : 'Create classroom'}
         </button>
       </form>

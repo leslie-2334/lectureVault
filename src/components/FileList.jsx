@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient'
+import './FileList.css'
 
 export default function FileList({ classroom, refreshTrigger }) {
     const [files, setFiles] = useState([])
@@ -38,26 +39,6 @@ export default function FileList({ classroom, refreshTrigger }) {
         return () => supabase.removeChannel(channel)
     }, [classroom.id, refreshTrigger])
 
-    // useEffect(() => {
-    //     fetchFiles()
-
-    //     const channel = supabase
-    //         .channel('files')
-    //         .on(
-    //             'postgres_changes',
-    //             {
-    //                 event: 'INSERT',
-    //                 schema: 'public',
-    //                 table: 'files',
-    //                 filter: `classroom_id=eq.${classroom.id}`
-    //             },
-    //             () => { fetchFiles() }
-    //         )
-    //         .subscribe()
-
-    //     return () => supabase.removeChannel(channel)
-    // }, [classroom.id])
-
     const handleDownload = async (file) => {
         const { data } = await supabase.storage
             .from('materials')
@@ -67,21 +48,14 @@ export default function FileList({ classroom, refreshTrigger }) {
     }
 
     if (loading) return <p>Loading files...</p>
-    if (files.length === 0) return <p style={{ color: 'gray' }}>No files uploaded yet.</p>
+    if (files.length === 0) return <p className="empty-files">No files uploaded yet.</p>
 
     return (
-        <div>
-            <h4 style={{ marginBottom: 12 }}>Materials</h4>
+        <div className="file-list-container">
+            <h4 >Materials</h4>
             {files.map((file) => (
-                <div
+                <div className='file'
                     key={file.id}
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        padding: '10px 0',
-                        borderBottom: '1px solid #eee'
-                    }}
                 >
                     <span>{file.name}</span>
                     <button onClick={() => handleDownload(file)}>Download</button>

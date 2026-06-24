@@ -1,0 +1,15 @@
+.create-classroom-container input{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.create-classroom-container .error-message{
+    color: red;
+}
+
+.create-classroom-container button{
+    width: 100%;
+    padding:10px;
+}

@@ -1,0 +1,15 @@
+.file-list-container .file{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee
+}
+.file-list-container h4{
+    margin-bottom: 12px;
+}
+
+.empty-files{
+    color: gray;
+    margin: 0;
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
+import './JoinClassroom.css'
 
 export default function JoinClassroom({ user, onJoined }) {
   const [code, setCode] = useState('')
@@ -38,7 +39,7 @@ export default function JoinClassroom({ user, onJoined }) {
   }
 
   return (
-    <div>
+    <div className="join-classroom-container" >
       <h3>Join a classroom</h3>
       <form onSubmit={handleJoin}>
         <input
@@ -47,10 +48,9 @@ export default function JoinClassroom({ user, onJoined }) {
           value={code}
           onChange={(e) => setCode(e.target.value)}
           required
-          style={{ width: '100%', padding: 10, boxSizing: 'border-box', marginBottom: 12 }}
         />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit" disabled={loading} style={{ width: '100%', padding: 10 }}>
+        {error && <p className='error-message'>{error}</p>}
+        <button type="submit" disabled={loading}>
           {loading ? 'Joining...' : 'Join classroom'}
         </button>
       </form>

@@ -1,0 +1,18 @@
+.join-classroom-container{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.join-classroom-container input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+.join-classroom-container .error-message{
+    color: red;
+}
+.join-classroom-container button{
+    width: 100%;
+    padding: 10px;
+}
