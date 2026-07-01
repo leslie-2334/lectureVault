@@ -52,9 +52,6 @@ export default function Dashboard() {
             <div className="dashboard-header">
                 <h2>LectureVault 🎓</h2>
                 <div className="dashboard-header-actions">
-                    {classroom && user && (
-                        <NotificationBell user={user} classroom={classroom} />
-                    )}
                     <button onClick={handleLogout}>Log out</button>
                 </div>
             </div>
