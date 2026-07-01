@@ -3,3 +3,26 @@
     margin: 100px auto;
     padding: 0px 20px;
 }
+.home-container .classroom-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.classroom-card button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.classroom-card .classroom-actions{
+    display: flex;
+    gap: 10px;
+}

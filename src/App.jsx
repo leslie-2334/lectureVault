@@ -10,11 +10,17 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route 
+          path="/home" 
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          } />
         <Route
-          path="/dashboard"
+          path="/dashboard/:classroomId"
           element={
             <ProtectedRoute>
               <Dashboard />

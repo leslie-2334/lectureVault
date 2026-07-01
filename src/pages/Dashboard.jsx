@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabaseClient'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import CreateClassroom from '../components/CreateClassroom'
 import JoinClassroom from '../components/JoinClassroom'
 import FileUpload from '../components/FileUpload'
@@ -13,6 +13,7 @@ export default function Dashboard() {
     const [classroom, setClassroom] = useState(null)
     const [loading, setLoading] = useState(true)
     const [refreshTrigger, setRefreshTrigger] = useState(0)
+    const { classroomId } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -22,12 +23,12 @@ export default function Dashboard() {
             setUser(currentUser)
 
             const { data: membership } = await supabase
-                .from('classroom_members')
-                .select('classroom_id, classrooms(id, name, code, created_by)')
-                .eq('user_id', currentUser.id)
+                .from('classrooms')
+                .select('id, name, code, created_by')
+                .eq('id', classroomId)
                 .single()
 
-            if (membership) setClassroom(membership.classrooms)
+            if (membership) setClassroom(membership)
 
             setLoading(false)
         }
@@ -66,10 +67,6 @@ export default function Dashboard() {
                     <p className="join-code-text" >Join code: <strong className="classroom-code" >{classroom.code}</strong></p>
                     <hr className="classroom-hr" />
 
-                    {/* {classroom.created_by === user.id && (
-                        <FileUpload user={user} classroom={classroom} onUploaded={handleUploaded} />
-                    )} */}
-
                     {classroom.created_by === user.id ? (
                         <FileUpload user={user} classroom={classroom} onUploaded={handleUploaded} />
                     ) : null}
@@ -78,10 +75,8 @@ export default function Dashboard() {
                     <FileList classroom={classroom} refreshTrigger={refreshTrigger} />
                 </div>
             ) : (
-                <div className="create-join-classroom" >
-                    <CreateClassroom user={user} onCreated={setClassroom} />
-                    <hr />
-                    <JoinClassroom user={user} onJoined={setClassroom} />
+                <div className="classroom-actions-container" >
+                    <p>Couldn't find your classroom. <span onClick={() => navigate('/home')}>Go back Home?</span></p>
                 </div>
             )}
         </div>
